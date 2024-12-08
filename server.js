@@ -8,6 +8,12 @@ const jwt = require("jsonwebtoken");
 const app = express();
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB Connected"))
@@ -51,5 +57,9 @@ app.post("/login", async (req, res) => {
     }
 });
 
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("MongoDB Connection Error:", err.message));
+
 // Start Server
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(3000, () => console.log("Server running on port 3000"));
