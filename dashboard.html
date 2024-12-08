@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Parent Dashboard</h1>
+        <button onclick="logout()">Logout</button>
+    </header>
+    <main>
+        <!-- Section to Display Existing Child Profiles -->
+        <section id="child-list-section">
+            <h2>Child Profiles</h2>
+            <button id="add-child-btn" onclick="openAddForm()">Add New Profile</button>
+            <div id="child-list">
+                <!-- Child profiles will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Add/Edit Child Profile Form -->
+        <section id="child-form-section" style="display: none;">
+            <h2 id="form-title">Add/Edit Profile</h2>
+            <form id="child-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Child's Name" required>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" placeholder="Child's Age" required>
+
+                <label for="interests">Interests:</label>
+                <textarea id="interests" name="interests" placeholder="E.g., Soccer, Drawing" required></textarea>
+
+                <label for="wishes">Wishes:</label>
+                <textarea id="wishes" name="wishes" placeholder="E.g., Lego set, Teddy bear" required></textarea>
+
+                <button type="button" onclick="saveChild()">Save</button>
+                <button type="button" onclick="closeForm()">Cancel</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 TalkToSanta.ai</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

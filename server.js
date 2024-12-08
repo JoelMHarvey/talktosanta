@@ -4,15 +4,12 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const childRoutes = require("./routes/child");
+app.use(childRoutes);
 
 const app = express();
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -62,4 +59,9 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.error("MongoDB Connection Error:", err.message));
 
 // Start Server
-app.listen(3000, () => console.log("Server running on port 3000"));
+
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
