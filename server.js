@@ -4,12 +4,20 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const childRoutes = require("./routes/child");
-app.use(childRoutes);
 
 const app = express();
 app.use(bodyParser.json());
 
+// Debugging lines
+console.log('Current working directory:', process.cwd());
+try {
+    console.log('Resolved path:', require.resolve('./routes/child'));
+} catch (error) {
+    console.error('Error resolving path:', error);
+}
+
+const childRoutes = require('./routes/child'); // Ensure this path is correct
+app.use('/api', childRoutes); // Prefix routes with /api
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
