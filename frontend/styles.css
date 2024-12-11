@@ -85,6 +85,14 @@ h2 {
     border-radius: 4px;
 }
 
+.child img {
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 .child button:hover {
     background-color: #584bff;
 }

@@ -1,4 +1,4 @@
-const API_BASE = "https://talktosanta-k9hj4ugdo-joels-projects-497ed6a5.vercel.app"; // Update with your backend URL
+const API_BASE = "https://talktosanta-b3on234ck-joels-projects-497ed6a5.vercel.app/dashboard.html"; // Update with your backend URL
 
 // Fetch and display child profiles
 async function fetchChildren() {
