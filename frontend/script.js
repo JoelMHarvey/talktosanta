@@ -1,3 +1,3 @@
 document.getElementById("signup-btn").addEventListener("click", () => {
-    alert("Signup feature coming soon!");
+    window.location.href = "dashboard.html"; // Redirect to the dashboard page
 });
