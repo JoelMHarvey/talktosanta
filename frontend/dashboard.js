@@ -8,13 +8,14 @@ async function fetchChildren() {
     const children = await response.json();
     const childList = document.getElementById("child-list");
     childList.innerHTML = children.map(child => `
-        <div class="child">
+        <div class="child" id="child-${child._id}">
             <div>
                 <h3>${child.name} (${child.age} years old)</h3>
                 <p>Interests: ${child.interests.join(", ")}</p>
                 <p>Wishes: ${child.wishes.join(", ")}</p>
             </div>
             <div>
+                <button onclick="fetchQRCode('${child._id}')">Generate QR Code</button>
                 <button onclick="editChild('${child._id}')">Edit</button>
                 <button onclick="deleteChild('${child._id}')">Delete</button>
             </div>
@@ -68,6 +69,23 @@ async function deleteChild(id) {
         fetchChildren();
     } else {
         alert("Error deleting child profile");
+    }
+}
+async function fetchQRCode(childId) {
+    const response = await fetch(`${API_BASE}/children/${childId}/qrcode`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        const qrCodeImg = document.createElement("img");
+        qrCodeImg.src = data.qrCode;
+        qrCodeImg.alt = "QR Code";
+
+        // Add QR code to the child profile display
+        document.querySelector(`#child-${childId}`).appendChild(qrCodeImg);
+    } else {
+        alert("Error fetching QR code");
     }
 }
 
