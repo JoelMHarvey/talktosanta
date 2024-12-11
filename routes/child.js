@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Child = require('../models/Child');
-const authMiddleware = require("./middleware/auth"); // Ensure parents are authenticated
+const Child = require("../models/Child");
+const authMiddleware = require("../middleware/auth"); // Ensure parents are authenticated
 
 // Create a new child profile
 router.post("/children", authMiddleware, async (req, res) => {

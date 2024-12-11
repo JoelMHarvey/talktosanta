@@ -1,3 +1,5 @@
+const path = require("path");
+console.log("Resolved path to Child.js:", path.resolve(__dirname, "./models/Child"));
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -11,12 +13,12 @@ app.use(bodyParser.json());
 // Debugging lines
 console.log('Current working directory:', process.cwd());
 try {
-    console.log('Resolved path:', require.resolve('./routes/child'));
+    console.log('Resolved path:', require.resolve("./models/Child"));
 } catch (error) {
     console.error('Error resolving path:', error);
 }
 
-const childRoutes = require('./routes/child'); // Ensure this path is correct
+const childRoutes = require("./routes/child"); // Ensure this path is correct
 app.use('/api', childRoutes); // Prefix routes with /api
 
 // Database Connection
