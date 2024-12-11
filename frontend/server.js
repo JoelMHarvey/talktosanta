@@ -18,7 +18,7 @@ try {
     console.error('Error resolving path:', error);
 }
 
-const childRoutes = require("./routes/child"); // Ensure this path is correct
+const childRoutes = require("../routes/child"); // Ensure this path is correct
 app.use('/api', childRoutes); // Prefix routes with /api
 
 // Database Connection
